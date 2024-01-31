@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: email_address
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['mastercard', 'americanexpress']
+
+models:
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+      - name: product_category
+        tests:
+          - accepted_values:
+              values: ['household', 'beverages', 'food']
+
+  - name: stg_orders
+    columns:
+      - name: Order_ID
+        tests:
+          - not_null
+      - name: Product_ID
+        tests:
+          - not_null
+      - name: Order_Date
+        tests:
+          - not_null
