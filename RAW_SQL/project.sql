@@ -1,0 +1,44 @@
+
+create or replace warehouse transformation;
+create database raw;
+create database analytics;
+create schema raw.hitman_shop;
+
+
+create or replace TABLE RAW.HITMAN_SHOP.PRODUCTS (
+	PRODUCT_NAME STRING,
+	PRODUCT_ID INTEGER,
+	PRICE STRING,
+	EXPIRATION_DATE DATE,
+	CATEGORY STRING
+);
+
+create or replace TABLE RAW.HITMAN_SHOP.CUSTOMERS (
+	CUSTOMER_ID INTEGER,
+	FIRST_NAME STRING,
+	LAST_NAME STRING,
+	EMAIL STRING,
+	BIRTHDATE DATE,
+	ADDRESS STRING,
+	CC FLOAT,
+	CC_TYPE STRING
+);
+
+create or replace TABLE RAW.HITMAN_SHOP.ORDERS (
+	ORDER_ID INTEGER,
+	CUSTOMER_ID INTEGER,
+	PRODUCT_ID INTEGER,
+	QUANTITY INTEGER,
+	ORDER_DATE DATE,
+	TOTAL_PRICE FLOAT,
+	SHIPPING_ADDRESS STRING
+);
+
+
+select * FROM raw.hitman_shop.products limit 50;
+select * FROM raw.hitman_shop.customers limit 50;
+select * FROM raw.hitman_shop.orders limit 50;
+
+
+DROP TABLE ANALYTICS.AGENT_SHOP.MY_FIRST_DBT_MODEL;
+DROP TABLE ANALYTICS.AGENT_SHOP.MY_SECOND_DBT_MODEL;
